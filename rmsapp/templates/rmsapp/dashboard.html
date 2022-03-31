@@ -1,0 +1,158 @@
+
+
+  {% extends 'rmsapp/root.html'%}
+
+
+
+
+
+
+  {% block content %}
+    
+    <title>Dashboard</title>
+
+    <br>
+
+    {% include 'rmsapp/chart.html'%}
+ 
+    <hr>
+    <div class="container-fluid">
+      <h2>Request Status</h2>
+
+    </div>
+    <hr>
+
+
+    <div class="row">
+      <div class="col">
+        <div class="col-md">
+          <div class="card text-center text-black  mb-3" id="total-orders">
+              <div class="card-header">
+                <h5 class="card-title">Total Requests</h5>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">{{total_requests}}</h3>
+              </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col">
+        <div class="col-md">
+          <div class="card text-center text-black  mb-3" id="orders-delivered">
+              <div class="card-header">
+                <h5 class="card-title">WIP</h5>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">{{total_WIP}}</h3>
+              </div>
+          </div>
+        </div>
+      </div>
+    
+
+      <div class="col">
+        <div class="col-md">
+          <div class="card text-center text-black  mb-3" id="orders-delivered">
+              <div class="card-header">
+                <h5 class="card-title">Pending Customer</h5>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">{{ total_P_C }}</h3>
+              </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col">
+        <div class="col-md">
+          <div class="card text-center text-black  mb-3" id="orders-pending">
+              <div class="card-header">
+                <h5 class="card-title">Completed</h5>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">{{total_Completed }}</h3>
+              </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col">
+        <div class="col-md">
+          <div class="card text-center text-black  mb-3" id="orders-pending">
+              <div class="card-header">
+                <h5 class="card-title">Rejected</h5>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">{{total_Rejected }}</h3>
+              </div>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+
+   <hr>
+
+
+    <h2>Latest Requests </h2>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+
+              <th scope="col">Service</th>
+            
+
+              <th scope="col">Request Date</th>
+           
+              <th scope="col">Customer Name</th>
+           
+              <th scope="col">Status</th>
+
+            </thead>
+            <tbody>
+        
+             
+             
+              {% for r in requests %}
+              <tr>
+      
+                <td>{{r.service}}</td>
+                <td>{{r.created_date}}</td>
+                <td>{{r.customer}}</td>
+                <td>{{r.status}}</td>
+                <td><a href="{% url 'edit' r.id %}" class="link-primary">Edit</a></td>
+        
+                <td><a class="btn btn-danger"  href=" {% url 'delete' r.id %}">Delete</a> </td>
+              </tr>
+              {% endfor %}     
+             </tbody>
+        </table>
+      </div>
+<hr>
+
+   
+<h1>{{req}}</h1>
+
+
+    
+<hr>
+     
+
+
+
+      <a class="btn btn-primary"  href=" {% url 'create_request' %}">Create Request</a> 
+<hr>
+
+
+
+
+
+
+  
+      
+  {% endblock content %}
+
+
+
+

@@ -1,0 +1,82 @@
+
+
+
+
+ {% include 'rmsapp/navbar.html'%}
+
+
+ {% include 'rmsapp/chart.html'%}
+
+ {% block content %}
+ 
+  
+<title>Customer </title>
+
+<hr>
+
+    <h2>Search customer and services  </h2>
+
+<!--This is for Search-->
+
+<form method ="get">
+  {% csrf_token %}
+  <div class="form-group row ">
+    {{form_filter.form}}
+    <button type="submit" class="btn btn-primary">Search</button>
+  </div>
+
+
+</form>
+  
+<hr>
+
+<h2>Add New Customer </h2>
+
+<hr>
+<form method = "POST">
+  {% csrf_token %}
+  {{form}}
+ 
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>
+<hr>
+
+
+
+<h2> Service requested by customer</h2>
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Request Date </th>
+            <th scope="col">Service Requested</th>
+          </tr>
+        </thead>
+        <tbody>
+           
+              {% for r in requests %}
+              <tr> 
+                <td>{{r.customer}}</td>
+                <td>{{r.customer.email}}</td>
+
+                <td>{{r.created_date}}</td>
+                <td>{{r.service}}</td>
+              </tr>
+              
+              {% endfor %}
+
+           
+        </tbody>
+      </table>
+    
+ {% endblock content %}
+
+ {% include 'rmsapp/footer.html'%}
+
+
+
+
+
+

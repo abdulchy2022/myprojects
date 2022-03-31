@@ -1,0 +1,30 @@
+{% extends 'rmsapp/root.html'%}
+
+{% block content %}
+    
+
+<h1>Do you really want to delete {{ service_request}} Service ? </h1>
+
+
+
+<div class = "row">
+
+    <a class="btn btn-primary"  href=" {% url 'home'  %}">Cancel</a> 
+
+    <hr>
+    <form action="" method = "POST">
+    
+        {% csrf_token %}
+    
+        <button type="submit" class="btn btn-primary">Go Ahead</button>
+    </form>
+    
+
+</div>
+
+
+
+
+
+    <hr>
+{% endblock content %}

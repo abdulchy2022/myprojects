@@ -1,0 +1,10 @@
+{% include 'rmsapp/navbar.html'%}
+
+
+<h1>Edit Request created by </h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" name ="submit">
+</form>

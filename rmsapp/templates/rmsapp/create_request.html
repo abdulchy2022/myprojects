@@ -1,0 +1,31 @@
+
+
+
+ {% include 'rmsapp/navbar.html'%}
+
+ {% block content %}
+ 
+
+ <div class="row">
+  <div class="col-md-12">
+    <div class="card card-body">
+      <form action="" method="POST">
+            {% csrf_token %}
+                {{form}}
+        <input type="submit" class="btn btn-info">
+      </form>
+    </div>
+  </div>
+</div>
+<a class="btn btn-primary"  href=" {% url 'home' %}">Back</a> 
+
+<hr>
+
+
+ {% endblock content %}
+
+ {% include 'rmsapp/footer.html'%}
+
+
+
+
